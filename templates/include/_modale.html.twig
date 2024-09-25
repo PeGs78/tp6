@@ -1,0 +1,66 @@
+<div id="modalSimple" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">OOO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a id ="btn-action" type="button" href="" class="btn btn-primary"></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('a[data-lien]').forEach(function(element) {
+    element.addEventListener('click', function() {
+      // on récupère tous les éléments de la balise a
+        let lien = this.getAttribute('data-lien');
+        let titre = this.getAttribute('data-titre');
+        let message = this.getAttribute('data-message');
+        let libelleBouton = this.getAttribute('data-libelleBouton');
+
+        // on affecte les éléments à la modal
+        document.getElementById('btn-action').setAttribute('href', lien);
+        console.log(document.querySelector('.modal-title'));
+        document.querySelector('.modal-title').textContent = titre;
+        document.querySelector('.modal-body').textContent = message;
+        document.getElementById('btn-action').textContent = libelleBouton;
+    });
+});
+    {# <div id="modalSimple" class="modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <a id="btn-action" href="" class="btn btn-primary"></button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div> #}
+
+  // $("a[data-lien]").click(function() {
+    //   //on récupère tous les éléments de la balise a
+  //   let lien=$(this).attr("data-lien");console.log("coucou");
+  //   let titre=$(this).attr("data-titre");
+  //   let message=$(this).attr("data-message");
+  //   let libelleBouton=$(this).attr("data-libelleBouton");
+  //   // on affecte les éléments à la modal
+  //   $("#btn-action").attr("href", lien);
+  //   $(".modal-title").text(titre);
+  //   $(".modal-body").text(message);
+  //   $("#btn-action").text(libelleBouton);
+  // });
+</script>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Ma Musique{% endblock %}</title>
+        <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
+        <link rel="stylesheet" href=" {{asset('css/app.css')}} ">
+        <script src="https://kit.fontawesome.com/7c3e62fb26.js" crossorigin="anonymous"></script>
+        
+    <body>
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href=" {{path('accueil')}} ">Ma Musique</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Gestion des artistes</a>
+                        <div class="dropdown-menu">
+                        <h6 class="dropdown-header">Dropdown header</h6>
+                        <a class="dropdown-item" href=" {{path('artistes')}} ">Liste des artistes </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Gestion des albums</a>
+                        <div class="dropdown-menu">
+                        <h6 class="dropdown-header">Dropdown header</h6>
+                        <a class="dropdown-item" href=" {{path('albums')}} ">Liste des albums</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
+                        <div class="dropdown-menu">
+                        <h6 class="dropdown-header">Dropdown header</h6>
+                        <a class="dropdown-item" href=" {{path('admin_artistes')}} ">Gestion des artistes</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+    {#Affiche tous les messages flash#}
+    {% for label, messages in app.flashes %}
+        <div class="alert alert-{{label}} mt-3">
+            {% for message in messages %}
+                <p> {{message}} </p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+        {% block body %}{% endblock %}
+    </div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
