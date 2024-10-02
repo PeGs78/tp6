@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Artiste;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
@@ -65,6 +66,15 @@ class ArtisteRepository extends ServiceEntityRepository
             ->orderBy('art.nom', 'ASC')
             ->getQuery()
         ;
+    }
+
+    /**
+    * @return QueryBuilder Returns a QueryBuilder
+    */
+    public function listeArtisteSimple():QueryBuilder
+    {
+        return $this->createQueryBuilder('art')
+                    ->orderBy('art.nom', 'ASC');
     }
 //    public function findOneBySomeField($value): ?Artiste
 //    {
